@@ -4,16 +4,13 @@ This is my first Oh My Zsh plugin. It's made to use git in a faster and more und
 
 ## Requirements
 
-<br>
 
 ### Oh My Zsh
 
-<br>
 
 #### Windows 
 [How to Install Oh My Zsh! on Windows 10 Home Edition](https://dev.to/vsalbuq/how-to-install-oh-my-zsh-on-windows-10-home-edition-49g2)
 
-<br>
 
 #### Mac OS / Linux 
 
@@ -25,7 +22,6 @@ Install Oh My Zsh via wget
 
 `$ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"`
 
-<br>
 
 ### Git 
 
@@ -34,8 +30,6 @@ Install git for [Windows](https://git-scm.com/download/win)
 Install git for [Mac OS X](https://git-scm.com/download/mac)
 
 Install git for [Linux](https://git-scm.com/download/linux)
-
-<br>
 
 
 ### Hub 
@@ -51,7 +45,6 @@ Install git for [Linux](https://git-scm.com/download/linux)
 
 Setting up Hub can be hard. 
 
-<br>
 
 ## Aliases
 
