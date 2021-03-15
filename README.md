@@ -9,6 +9,7 @@ This is my first Oh My Zsh plugin. It's made to use git in a faster and more und
 
 
 #### Windows 
+
 [How to Install Oh My Zsh! on Windows 10 Home Edition](https://dev.to/vsalbuq/how-to-install-oh-my-zsh-on-windows-10-home-edition-49g2)
 
 
@@ -43,7 +44,9 @@ Install git for [Linux](https://git-scm.com/download/linux)
 | Windows       | [Scoop](http://scoop.sh/)                     | `scoop install hub`   |
 | Windows       | [Chocolatey](https://chocolatey.org/)         | `choco install hub`   |
 
-Setting up Hub can be hard. 
+#### Bad credentials error
+
+Create a new [PAT](https://github.com/settings/tokens) (Personal access token) and use this token instead of your github password
 
 
 ## Aliases
