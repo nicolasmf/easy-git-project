@@ -1,6 +1,7 @@
 autoload -Uz is-at-least
 
 error="$fg_bold[red][!]$reset_color"
+git_current_branch=`git rev-parse --abbrev-ref HEAD`
 
 create.repo() { # create.repo <repo_name>
 
@@ -59,7 +60,6 @@ g.pushto(){ # g.pushto <branch_name>
 
     echo "$error Branch doesn't exist."
 }
-
 
 alias g='git'
 alias g.fpush='git push origin $(git_current_branch) --force'
