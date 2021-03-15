@@ -51,7 +51,7 @@ g.pushto(){ # g.pushto <branch_name>
 
     local branch_name=$1
 
-    command=`git rev-parse --verify $branch_name` 2>/dev/null
+    local command=`git rev-parse --verify $branch_name` 2>/dev/null
 
     if  [[ ! -z $command ]]; then
         git push origin "$branch_name"
@@ -60,6 +60,25 @@ g.pushto(){ # g.pushto <branch_name>
 
     echo "$error Branch doesn't exist."
 }
+
+g.goto(){ # g.goto <branch_name>
+    if (( # == 0 || # > 1)); then
+        echo "$error Invalid branch name."
+        return 0
+    fi
+
+    local branch_name=$1
+    local command=`git rev-parse --verify $branch_name` 2>/dev/null
+
+    if  [[ -z $command ]]; then
+        echo "$error Branch doesn't exist."
+        return 0
+    fi
+
+    git checkout $branch_name
+    return 0
+}
+
 
 alias g='git'
 alias g.fpush='git push origin $(git_current_branch) --force'
