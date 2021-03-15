@@ -1,6 +1,57 @@
 # Easy git project
 
-This is my first Oh My Zsh plugin.
+This is my first Oh My Zsh plugin. It's made to use git in a faster and more understandlable way.
+
+## Requirements
+
+<br>
+
+### Oh My Zsh
+
+<br>
+
+#### Windows 
+[How to Install Oh My Zsh! on Windows 10 Home Edition](https://dev.to/vsalbuq/how-to-install-oh-my-zsh-on-windows-10-home-edition-49g2)
+
+<br>
+
+#### Mac OS / Linux 
+
+Install Oh My Zsh via curl
+
+`$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
+Install Oh My Zsh via wget
+
+`$ sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"`
+
+<br>
+
+### Git 
+
+Install git for [Windows](https://git-scm.com/download/win)
+
+Install git for [Mac OS X](https://git-scm.com/download/mac)
+
+Install git for [Linux](https://git-scm.com/download/linux)
+
+<br>
+
+
+### Hub 
+
+[Github](https://github.com/github/hub)
+
+|   Platform    |                      Manager                  |        Command        |
+| :------------ | :-------------------------------------------- | :-------------------- |
+| macOS, Linux  | [Homebrew](https://docs.brew.sh/Installation) | `brew install hub`    |
+| macOS, Linux  | [Nix](https://nixos.org/)                     | `nix-env -i hub`      |
+| Windows       | [Scoop](http://scoop.sh/)                     | `scoop install hub`   |
+| Windows       | [Chocolatey](https://chocolatey.org/)         | `choco install hub`   |
+
+Setting up Hub can be hard. 
+
+<br>
 
 ## Aliases
 
