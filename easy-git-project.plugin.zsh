@@ -68,8 +68,8 @@ g.goto(){ # g.goto <branch_name>
     fi
 
     local branch_name=$1
-    local command=`git rev-parse --verify $branch_name` 2>/dev/null
 
+    local command=`git rev-parse --verify $branch_name` 2>/dev/null
     if  [[ -z $command ]]; then
         echo "$error Branch doesn't exist."
         return 0
@@ -77,6 +77,38 @@ g.goto(){ # g.goto <branch_name>
 
     git checkout $branch_name
     return 0
+}
+
+g.brename(){ # g.brename <old_branch> <new_branch>
+
+    if (( # == 0 || # == 1 || # > 2 )); then
+        echo "$error Invalid branches names."
+        return 0
+    fi
+
+    old_branch=$1
+    new_branch=$2
+
+    local command=`git rev-parse --verify $old_branch` 2>/dev/null
+    if  [[ -z $command ]]; then
+        echo "$error Branch '$old_branch' doesn't exist."
+        return 0
+    fi
+
+    if [ "$git_current_branch" = "$old_branch" ]; then
+        
+        git branch -m $new_branch
+        git push origin :$old_branch $new_branch
+        git push origin -u $new_branch
+        return 0
+    fi
+
+    git checkout $old_branch
+    git branch -m $new_branch
+    git push origin :$old_branch $new_branch
+    git push origin -u $new_branch
+    return 0
+
 }
 
 

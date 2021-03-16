@@ -76,3 +76,4 @@ Create a new [PAT](https://github.com/settings/tokens) (Personal access token) a
 | g.pushto      | Push to specified branch.                                 |
 | make.repo     | Create a repository from existing project.                |
 | g.goto        | Checkout to specified branch.                             |
+| g.brename     | Rename specified branch.                                  |
