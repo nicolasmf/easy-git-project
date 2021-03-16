@@ -1,7 +1,6 @@
 autoload -Uz is-at-least
 
 error="$fg_bold[red][!]$reset_color"
-git_current_branch=`git rev-parse --abbrev-ref HEAD`
 
 create.repo() { # create.repo <repo_name>
 
@@ -54,7 +53,7 @@ g.pushto(){ # g.pushto <branch_name>
     local command=`git rev-parse --verify $branch_name` 2>/dev/null
 
     if  [[ ! -z $command ]]; then
-        git push origin "$branch_name"
+        git push -u origin "$branch_name"
         return 0
     fi
 
@@ -95,6 +94,8 @@ g.brename(){ # g.brename <old_branch> <new_branch>
         return 0
     fi
 
+    local git_current_branch=`git rev-parse --abbrev-ref HEAD`
+
     if [ "$git_current_branch" = "$old_branch" ]; then
         
         git branch -m $new_branch
@@ -111,9 +112,17 @@ g.brename(){ # g.brename <old_branch> <new_branch>
 
 }
 
+g.fpush(){ 
+    local git_current_branch=`git rev-parse --abbrev-ref HEAD`
+    git push origin $git_current_branch --force
+}
+
+g.push(){ 
+    local git_current_branch=`git rev-parse --abbrev-ref HEAD`
+    git push -u origin $git_current_branch
+}
 
 alias g='git'
-alias g.fpush='git push origin $(git_current_branch) --force'
 alias g.apush='git push --all origin'
 alias g.apull='git pull --all'
 alias gaa='git add .'
@@ -122,6 +131,5 @@ alias gbc='git checkout'
 alias gc='git commit -m '
 alias gi='git init'
 alias gignore='touch .gitignore'
-alias gp='git push -u origin $(git_current_branch)'
 alias readme='echo \# $PWD:t > README.md'
 alias webproject='mkdir img styles scripts && touch scripts/script.js index.html styles/styles.css'
