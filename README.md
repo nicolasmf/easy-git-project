@@ -69,11 +69,11 @@ Create a new [PAT](https://github.com/settings/tokens) (Personal access token) a
 
 ## Functions 
 
-|    Function   |                       Description                         |
-| :------------ | :-------------------------------------------------------- | 
-| create.repo   | Create a repository with specified name.                  |
-| g.cpush       | Commit and push to current branch.                        |
-| g.pushto      | Push to specified branch.                                 |
-| make.repo     | Create a repository from existing project.                |
-| g.goto        | Checkout to specified branch.                             |
-| g.brename     | Rename specified branch.                                  |
+|    Function   |                       Description                         | Usage                                 |
+| :------------ | :-------------------------------------------------------- | :------------------------------------ |
+| create.repo   | Create a repository with specified name.                  | create.repo <repo_name>               |
+| g.cpush       | Commit and push to current branch.                        | g.cpush <commit_message>              |
+| g.pushto      | Push to specified branch.                                 | g.pushto <branch_name>                |
+| make.repo     | Create a repository from existing project.                | make.repo                             |
+| g.goto        | Checkout to specified branch.                             | g.goto <branch_name>                  |
+| g.brename     | Rename specified branch.                                  | g.brename <old_branch> <new_branch>   |
