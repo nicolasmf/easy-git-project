@@ -49,6 +49,10 @@ Install git for [Linux](https://git-scm.com/download/linux)
 Create a new [PAT](https://github.com/settings/tokens) (Personal access token) and use this token instead of your github password
 
 
+## Installation
+
+See [INSTALL.md](INSTALL.md)
+
 ## Aliases
 
 |    Alias   |                                  Command                                         |
