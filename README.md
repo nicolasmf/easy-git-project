@@ -67,7 +67,6 @@ See [INSTALL.md](INSTALL.md)
 | gc         | git commit -m                                                                    |
 | gi         | git init                                                                         |
 | gignore    | touch .gitignore                                                                 |
-| gp         | git push origin $(git_current_branch)                                            |
 | readme     | echo \# $PWD:t > README.md                                                       |
 | webproject | mkdir img styles scripts && touch scripts/script.js index.html styles/styles.css |
 
@@ -81,3 +80,4 @@ See [INSTALL.md](INSTALL.md)
 | make.repo     | Create a repository from existing project.                | make.repo                             |
 | g.goto        | Checkout to specified branch.                             | g.goto <branch_name>                  |
 | g.brename     | Rename specified branch.                                  | g.brename <old_branch> <new_branch>   |
+| g.pushto      | Push to actual branch.                                    | g.pushto                              |
