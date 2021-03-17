@@ -29,9 +29,9 @@ create.repo() { # create.repo <repo_name>
     git init
 
     if [ "$2" = "-p" ]; then
-        hub create -po
+        hub create -p
     else
-        hub create -o
+        hub create
     fi
 
     git add .
@@ -155,4 +155,15 @@ g.help() {
     echo g.goto : Checkout to specified branch.                  
     echo g.brename : Rename specified branch.   
     echo g.pushto : Push to actual branch.
+    echo repo.delete : Delete actual repository.
+}
+
+repo.delete(){
+
+    if [ "$1" = "-y" ]; then
+        hub delete -y $PWD:t
+    else
+        hub delete $PWD:t
+    fi
+
 }

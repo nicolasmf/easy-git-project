@@ -74,11 +74,12 @@ See [INSTALL.md](INSTALL.md)
 
 |    Function   |                       Description                         | Usage                                 |
 | :------------ | :-------------------------------------------------------- | :------------------------------------ |
-| create.repo   | Create a repository with specified name.                  | create.repo <repo_name>               |
+| create.repo   | Create a repository with specified name.                  | create.repo <repo_name> (-p)          |
 | g.cpush       | Commit and push to current branch.                        | g.cpush <commit_message>              |
 | g.pushto      | Push to specified branch.                                 | g.pushto <branch_name>                |
-| make.repo     | Create a repository from existing project.                | make.repo                             |
+| make.repo     | Create a repository from existing project.                | make.repo (-p)                        |
 | g.goto        | Checkout to specified branch.                             | g.goto <branch_name>                  |
 | g.brename     | Rename specified branch.                                  | g.brename <old_branch> <new_branch>   |
 | g.pushto      | Push to actual branch.                                    | g.pushto                              |
 | g.help        | Print commands list with description                      | g.help                                |
+| repo.delete   | Delete actual repository                                  | repo.delete OR repo.delete -y         |
