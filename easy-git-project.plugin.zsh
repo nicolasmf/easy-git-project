@@ -2,9 +2,21 @@ autoload -Uz is-at-least
 
 error="$fg_bold[red][!]$reset_color"
 
+alias g='git'
+alias g.apush='git push --all origin'
+alias g.apull='git pull --all'
+alias gaa='git add .'
+alias gb='git branch'
+alias gbc='git checkout'
+alias gc='git commit -m '
+alias gi='git init'
+alias gignore='touch .gitignore'
+alias readme='echo \# $PWD:t > README.md'
+alias webproject='mkdir img styles scripts && touch scripts/script.js index.html styles/styles.css'
+
 create.repo() { # create.repo <repo_name>
 
-    if (( # == 0 || # > 1)); then
+    if (( # == 0 || # > 2)); then
         echo "$error Invalid repository name"
         return 0
     fi
@@ -13,21 +25,33 @@ create.repo() { # create.repo <repo_name>
 
     mkdir "$repo"
     cd "$repo"
-    readme
+    echo \# $PWD:t > README.md
     git init
-    hub create -o
+
+    if [ "$2" = "-p" ]; then
+        hub create -po
+    else
+        hub create -o
+    fi
+
     git add .
     git commit -m "Initial commit"
-    git push origin master
+    git push -u origin master
 }
 
 make.repo() { # make.repo
-    
+
     git init
-    hub create
+    
+    if [ "$2" = "-p" ]; then
+        hub create -p
+    else
+        hub create
+    fi
+
     git add .
     git commit -m "Initial commit"
-    git push origin master
+    git push -u origin master
 }
 
 g.cpush(){ # g.cpush <commit_message>
@@ -38,7 +62,7 @@ g.cpush(){ # g.cpush <commit_message>
 
     git add .
     git commit -m "$1"
-    gp
+    g.push
 
 }
 
@@ -132,15 +156,3 @@ g.help() {
     echo g.brename : Rename specified branch.   
     echo g.pushto : Push to actual branch.
 }
-
-alias g='git'
-alias g.apush='git push --all origin'
-alias g.apull='git pull --all'
-alias gaa='git add .'
-alias gb='git branch'
-alias gbc='git checkout'
-alias gc='git commit -m '
-alias gi='git init'
-alias gignore='touch .gitignore'
-alias readme='echo \# $PWD:t > README.md'
-alias webproject='mkdir img styles scripts && touch scripts/script.js index.html styles/styles.css'
