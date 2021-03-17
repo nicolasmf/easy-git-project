@@ -81,3 +81,4 @@ See [INSTALL.md](INSTALL.md)
 | g.goto        | Checkout to specified branch.                             | g.goto <branch_name>                  |
 | g.brename     | Rename specified branch.                                  | g.brename <old_branch> <new_branch>   |
 | g.pushto      | Push to actual branch.                                    | g.pushto                              |
+| g.help        | Print commands list with description                      | g.help                                |

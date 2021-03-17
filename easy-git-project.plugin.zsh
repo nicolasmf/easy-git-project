@@ -122,6 +122,17 @@ g.push(){
     git push -u origin $git_current_branch
 }
 
+g.help() {
+    echo Commands List : 
+    echo create.repo : Create a repository with specified name.
+    echo g.cpush : Commit and push to current branch.
+    echo g.pushto : Push to specified branch.                
+    echo make.repo : Create a repository from existing project.
+    echo g.goto : Checkout to specified branch.                  
+    echo g.brename : Rename specified branch.   
+    echo g.pushto : Push to actual branch.
+}
+
 alias g='git'
 alias g.apush='git push --all origin'
 alias g.apull='git pull --all'
