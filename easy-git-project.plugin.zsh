@@ -146,6 +146,21 @@ g.push(){
     git push -u origin $git_current_branch
 }
 
+repo.delete(){
+
+    if [[ ! -d "$PATH/.git" ]]; then
+        echo "$error Not in a repository"
+        return 0
+    fi
+
+    if [ "$1" = "-y" ]; then
+        hub delete -y $PWD:t
+    else
+        hub delete $PWD:t
+    fi
+
+}
+
 g.help() {
     echo Commands List : 
     echo create.repo : Create a repository with specified name.
@@ -156,14 +171,4 @@ g.help() {
     echo g.brename : Rename specified branch.   
     echo g.pushto : Push to actual branch.
     echo repo.delete : Delete actual repository.
-}
-
-repo.delete(){
-
-    if [ "$1" = "-y" ]; then
-        hub delete -y $PWD:t
-    else
-        hub delete $PWD:t
-    fi
-
 }
