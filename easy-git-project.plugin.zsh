@@ -149,7 +149,7 @@ g.push(){
 repo.delete(){
 
     if [[ ! -d "$PATH/.git" ]]; then
-        echo "$error Not in a repository"
+        echo "$error Not in a repository."
         return 0
     fi
 
@@ -161,14 +161,34 @@ repo.delete(){
 
 }
 
+.tsc(){
+
+    file=$1
+    extension="${1##*.}"
+    filename="${1%.*}"
+
+    if (( # == 0 || # > 1 )); then
+        echo "$error Invalid file name."
+        return 0
+    fi
+
+    if [ ! "$extension" = "ts" ]; then
+       echo "$error Invalid file extension."
+       return 0
+    fi
+    
+    echo "Building..." && tsc "$file" && echo "[Done]\n" && node "$filename".js && rm "$filename".js
+}
+
 g.help() {
-    echo Commands List : 
-    echo create.repo : Create a repository with specified name.
-    echo g.cpush : Commit and push to current branch.
-    echo g.pushto : Push to specified branch.                
-    echo make.repo : Create a repository from existing project.
-    echo g.goto : Checkout to specified branch.                  
-    echo g.brename : Rename specified branch.   
-    echo g.pushto : Push to actual branch.
-    echo repo.delete : Delete actual repository.
+    echo "Commands List :" 
+    echo "create.repo : Create a repository with specified name."
+    echo "g.cpush : Commit and push to current branch."
+    echo "g.pushto : Push to specified branch."       
+    echo "make.repo : Create a repository from existing project."
+    echo "g.goto : Checkout to specified branch." 
+    echo "g.brename : Rename specified branch." 
+    echo "g.pushto : Push to actual branch."
+    echo "repo.delete : Delete actual repository."
+    echo ".tsc : build and run typescript"
 }

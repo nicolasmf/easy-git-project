@@ -83,3 +83,4 @@ See [INSTALL.md](INSTALL.md)
 | g.pushto      | Push to actual branch.                                    | g.pushto                              |
 | g.help        | Print commands list with description                      | g.help                                |
 | repo.delete   | Delete actual repository                                  | repo.delete OR repo.delete -y         |
+|.tsc           | build and run typescript                                  | .tsc <file.ts>                        |
