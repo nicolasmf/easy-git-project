@@ -1,6 +1,6 @@
-# Easy git project
+# Easy projects
 
-This is my first Oh My Zsh plugin. It's made to use git in a faster and more understandlable way.
+This is my first Oh My Zsh plugin. It's made to use git and create projects in a faster and more understandlable way.
 
 ## Requirements
 
