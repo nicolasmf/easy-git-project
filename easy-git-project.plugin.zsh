@@ -164,6 +164,8 @@ OWNER=
 PREFIX=
 EOF
 
+    mkdir commands
+
 }
 
 g.cpush(){ # g.cpush <commit_message>
