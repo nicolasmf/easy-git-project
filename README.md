@@ -84,3 +84,4 @@ See [INSTALL.md](INSTALL.md)
 | g.help        | Print commands list with description                      | g.help                                |
 | repo.delete   | Delete actual repository                                  | repo.delete OR repo.delete -y         |
 |.tsc           | build and run typescript                                  | .tsc <file.ts>                        |
+| create.bot	| Create a directory for discord bot developing				| create.bot							|

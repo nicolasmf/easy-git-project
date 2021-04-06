@@ -54,6 +54,118 @@ make.repo() { # make.repo
     git push -u origin master
 }
 
+create.bot() {
+    npm init -y
+    npm install discord.js
+    npm install eslint
+    npm install dotenv
+    cat >> .eslintrc.json << EOF
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2019
+  },
+  "rules": {
+    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+    "comma-dangle": ["error", "always-multiline"],
+    "comma-spacing": "error",
+    "comma-style": "error",
+    "curly": ["error", "multi-line", "consistent"],
+    "dot-location": ["error", "property"],
+    "handle-callback-err": "off",
+    "indent": ["error", "tab"],
+    "max-nested-callbacks": ["error", { "max": 4 }],
+    "max-statements-per-line": ["error", { "max": 2 }],
+    "no-console": "off",
+    "no-empty-function": "error",
+    "no-floating-decimal": "error",
+    "no-lonely-if": "error",
+    "no-multi-spaces": "error",
+    "no-multiple-empty-lines": [
+      "error",
+      { "max": 2, "maxEOF": 1, "maxBOF": 0 }
+    ],
+    "no-shadow": ["error", { "allow": ["err", "resolve", "reject"] }],
+    "no-trailing-spaces": ["error"],
+    "no-var": "error",
+    "object-curly-spacing": ["error", "always"],
+    "prefer-const": "error",
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "space-before-blocks": "error",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "space-in-parens": "error",
+    "space-infix-ops": "error",
+    "space-unary-ops": "error",
+    "spaced-comment": "error",
+    "yoda": "error",
+    "no-unused-vars": "off"
+  }
+}
+EOF
+    cat >>  index.js << EOF 
+    const Discord = require('discord.js');
+    const fs = require('fs');
+
+    require('dotenv').config();
+    const prefix = process.env.PREFIX;
+    const owner = process.env.OWNER;
+    const token = process.env.TOKEN;
+
+    const client = new Discord.Client();
+    client.commands = new Discord.Collection();
+
+    const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+    for (const file of commandFiles) {
+        const command = require(`./commands/${file}`);
+        client.commands.set(command.name, command);
+    }
+
+    client.on('ready', () => {
+        console.log('Ready!');
+    });
+
+    client.on('message', message => {
+        if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+        const args = message.content.slice(prefix.length).trim().split(/ +/);
+        const commandName = args.shift().toLowerCase();
+
+        if (!client.commands.has(commandName)) return;
+
+        const command = client.commands.get(commandName);
+
+        try {
+            command.execute(client, message, args);
+        }
+        catch (error) {
+            message.reply('Error: ' + error);
+        }
+    })
+
+    client.login(token);
+EOF
+
+    cat >> .env << EOF
+TOKEN=
+OWNER=
+PREFIX=
+EOF
+
+}
+
 g.cpush(){ # g.cpush <commit_message>
     if (( # == 0 || # > 1)); then
         echo "$error Invalid commit message."
